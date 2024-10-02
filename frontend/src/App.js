@@ -1,5 +1,3 @@
-// src/App.js
-
 import React, { useContext } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import { AuthProvider, AuthContext } from './context/AuthContext';
@@ -40,7 +38,7 @@ const Dashboard = () => {
     const { user } = useContext(AuthContext);
 
     if (!user) {
-        return <Navigate to="/login" />;
+        return <Navigate to="/login/" />;
     }
 
     return (
@@ -56,9 +54,9 @@ const App = () => {
         <AuthProvider>
             <Router>
                 <Routes>
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/dashboard" element={<Dashboard />} />
-                    <Route path="*" element={<Navigate to="/dashboard" />} />
+                    <Route path="/login/" element={<Login />} />
+                    <Route path="/dashboard/" element={<Dashboard />} />
+                    <Route path="*" element={<Navigate to="/dashboard/" />} />
                 </Routes>
             </Router>
         </AuthProvider>
