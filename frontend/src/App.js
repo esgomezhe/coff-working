@@ -10,7 +10,7 @@ const Login = () => {
     const handleGoogleSuccess = async (credentialResponse) => {
         try {
             const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/auth/google/`, {
-                access_token: credentialResponse.credential,
+                id_token: credentialResponse.credential,
             });
             localStorage.setItem('token', res.data.key);
             setUser(res.data.user);

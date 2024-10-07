@@ -3,13 +3,10 @@ from pathlib import Path
 from decouple import config, Csv
 import dj_database_url
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = config('SECRET_KEY')
 
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
 
 if DEBUG:
@@ -104,9 +101,6 @@ REST_FRAMEWORK = {
     ],
 }
 
-# Allauth Config
-SITE_ID = 1
-
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
         'APP': {
@@ -138,7 +132,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = config('EMAIL_HOST')
 EMAIL_PORT = config('EMAIL_PORT', cast=int)
-EMAIL_USE_SSL = config('EMAIL_USE_SSL', default=True, cast=bool)  # Asegúrate de que el valor predeterminado sea correcto
+EMAIL_USE_SSL = config('EMAIL_USE_SSL', default=True, cast=bool)
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL')
@@ -167,5 +161,3 @@ CORS_ALLOW_HEADERS = [
 ]
 CORS_ALLOW_CREDENTIALS = True
 CSRF_COOKIE_NAME = "csrftoken"
-CSRF_TRUSTED_ORIGINS = config('DEV_CSRF_TRUSTED_ORIGINS', cast=Csv()) if DEBUG else config('PROD_CSRF_TRUSTED_ORIGINS', cast=Csv())
-CLIENT_TOKEN = config('CLIENT_TOKEN')
